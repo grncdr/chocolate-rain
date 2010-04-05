@@ -8,14 +8,14 @@ Requires eczarny's [XMLRPC.Framework][xmlrpc] to build.
 Planned Features
 -------------
  - Those already implemented by [wrTc]
-  - Torrent File Handling
-     - Loading torrent from disk and sending raw data to rTorrent
-  - Remote Filesystem browsing
-  - Scheduled updates of displayed torrents
+     - Torrent File Handling
+         - Loading torrent from disk and sending raw data to rTorrent
+     - Remote Filesystem browsing
+     - Scheduled updates of displayed torrents
  - New features
-  - Starting/Stopping/Removing torrents
-  - Filtering the torrent list (done)
-  - Detail view for individual torrent
+     - Starting/Stopping/Removing torrents
+     - Filtering the torrent list (done)
+     - Detail view for individual torrent
 
 <span style="font-size:80%;">...I think the name is funny.</span>
 
