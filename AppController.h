@@ -12,9 +12,15 @@
     NSWindow *window;
 	rtDaemon *daemon;
 	// List of torrents currently being displayed
-	NSMutableArray *torrents;
-	IBOutlet NSArrayController *torrentList;
+	IBOutlet NSArrayController *torrents;
 	IBOutlet NSPopUpButton *viewSelector;
+
+	// Core data stuffs
+	NSPersistentStoreCoordinator *persistentStoreCoordinator;
+    NSManagedObjectModel *managedObjectModel;
+    NSManagedObjectContext *managedObjectContext;
+	
+	// Controller for preferences window
 	NSWindowController *preferenceController;
 }
 
@@ -23,11 +29,6 @@
 -(IBAction) startSelected: (id) sender;
 -(IBAction) viewDidChange:(id) sender;
 //-(IBAction) loadTorrent:(id) sender;
-
--(rtTorrent *) objectInTorrentsAtIndex: (NSInteger)i;
--(NSUInteger) countOfTorrents;
-
--(BOOL) haveHash:(NSString *)hash;
 
 // @XMLRPCConnectionDelegate protocol
 - (void)request: (XMLRPCRequest *)request didReceiveResponse: (XMLRPCResponse *)response;
@@ -38,7 +39,10 @@
 
 @property (assign) IBOutlet NSWindow *window;
 @property (readonly) rtDaemon *daemon;
-@property (readonly) NSArray *torrents;
+@property (readonly) NSArrayController *torrents;
+@property (nonatomic, retain, readonly) NSPersistentStoreCoordinator *persistentStoreCoordinator;
+@property (nonatomic, retain, readonly) NSManagedObjectModel *managedObjectModel;
+@property (nonatomic, retain, readonly) NSManagedObjectContext *managedObjectContext;
 
 
 @end

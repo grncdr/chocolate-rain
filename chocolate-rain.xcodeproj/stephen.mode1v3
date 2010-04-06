@@ -265,6 +265,7 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateExpansionKey</key>
 							<array>
 								<string>29B97314FDCFA39411CA2CEA</string>
+								<string>DCAAF398116AEF5E007EF787</string>
 								<string>080E96DDFE201D6D7F000001</string>
 								<string>29B97315FDCFA39411CA2CEA</string>
 								<string>29B97317FDCFA39411CA2CEA</string>
@@ -278,7 +279,7 @@
 							<array>
 								<array>
 									<integer>5</integer>
-									<integer>1</integer>
+									<integer>3</integer>
 									<integer>0</integer>
 								</array>
 							</array>
@@ -320,7 +321,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>rtDaemon.m</string>
+								<string>AppController.m</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -328,33 +329,34 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>rtDaemon.m</string>
+										<string>AppController.m</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>DCAAF2AE1169BB5E007EF787</string>
+										<string>DCAAF471116B153A007EF787</string>
 										<key>history</key>
 										<array>
 											<string>DCCF044511691EE200A1634F</string>
-											<string>DC2F4DE11169502900F2BC5E</string>
 											<string>DC2F4E641169700900F2BC5E</string>
-											<string>DC2F4E7A1169740200F2BC5E</string>
 											<string>DC1AC43C1169772300C08A91</string>
 											<string>DC1AC4E811697EA000C08A91</string>
 											<string>DC1AC4E911697EA000C08A91</string>
 											<string>DC1AC4EA11697EA000C08A91</string>
 											<string>DC1AC4EB11697EA000C08A91</string>
 											<string>DC1AC4EC11697EA000C08A91</string>
-											<string>DC1AC4F011697EA000C08A91</string>
 											<string>DC1AC5AD1169A85B00C08A91</string>
 											<string>DCAAF2241169AAED007EF787</string>
 											<string>DCAAF2251169AAED007EF787</string>
 											<string>DCAAF24B1169B017007EF787</string>
-											<string>DCAAF24D1169B017007EF787</string>
-											<string>DCAAF2781169B4BC007EF787</string>
-											<string>DCAAF2961169B729007EF787</string>
-											<string>DCAAF2971169B729007EF787</string>
-											<string>DCAAF2851169B5D1007EF787</string>
+											<string>DCAAF330116AE16A007EF787</string>
+											<string>DCAAF33B116AE7CC007EF787</string>
+											<string>DCAAF33D116AE7CC007EF787</string>
+											<string>DCAAF39C116AF035007EF787</string>
+											<string>DCAAF41A116B0524007EF787</string>
+											<string>DCAAF456116B1213007EF787</string>
+											<string>DCAAF457116B1213007EF787</string>
+											<string>DCAAF45C116B1390007EF787</string>
+											<string>DCAAF45D116B1390007EF787</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -552,7 +554,7 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>DCAAF2AD1169BB13007EF787</string>
+		<string>DC86BA1D11683A4E002C2B5B</string>
 		<string>DCAAF2421169AE82007EF787</string>
 		<string>DCAAF2201169AAAE007EF787</string>
 		<string>DCAAF2211169AAAE007EF787</string>
@@ -583,7 +585,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CD0528F0623707200166675</string>
 								<key>PBXProjectModuleLabel</key>
-								<string></string>
+								<string>AppController.m</string>
 								<key>StatusBarVisibility</key>
 								<true/>
 							</dict>
@@ -600,6 +602,8 @@
 							<string>695pt</string>
 						</dict>
 						<dict>
+							<key>BecomeActive</key>
+							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
@@ -652,7 +656,7 @@
 			<key>WindowToolGUID</key>
 			<string>DC5BFAF41167F67700F31545</string>
 			<key>WindowToolIsVisible</key>
-			<false/>
+			<true/>
 		</dict>
 		<dict>
 			<key>FirstTimeWindowDisplayed</key>
@@ -1424,7 +1428,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>DC86BA1D11683A4E002C2B5B</string>
-				<string>DC1AC4FF11698D8E00C08A91</string>
+				<string>DCAAF2FC116ADFB8007EF787</string>
 				<string>DC86BA1C11683A4E002C2B5B</string>
 			</array>
 			<key>WindowString</key>

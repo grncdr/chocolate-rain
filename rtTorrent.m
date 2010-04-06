@@ -17,6 +17,7 @@
 @synthesize size_bytes;
 @synthesize bytes_done;
 @synthesize ratio;
+@synthesize started;
 
 - (id) init
 {
@@ -40,6 +41,7 @@
 	ratio = 0;
 	up_rate = 0;
 	down_rate = 0;
+	started = 1;
 	[self refreshAll];
 	return self;
 }
@@ -57,6 +59,11 @@
 - (void) refreshProperty:(NSString *) prop_name
 {
 	[daemon getProperty:prop_name forTorrent:self];
+}
+
+- (double) percentDone
+{
+	return ((double) bytes_done / (double) size_bytes);
 }
 
 - (NSString *)description

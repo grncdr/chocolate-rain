@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface rtTorrent : NSObjectController <XMLRPCConnectionDelegate> {
+@interface rtTorrent : NSObject <XMLRPCConnectionDelegate> {
 	NSString *sum;
 	rtDaemon *daemon;
 	NSString *name;
@@ -17,6 +17,7 @@
 	int size_bytes;
 	int bytes_done;
 	int ratio;
+	int started;
 }
 
 @property(readonly) NSString *sum;
@@ -26,6 +27,8 @@
 @property(readonly) int size_bytes;
 @property(readonly) int bytes_done;
 @property(readonly) int ratio;
+@property(readonly) int started;
+@property(readonly) double percentDone;
 
 
 - (id) initWithSHA1:(NSString *)hash andDaemon:(rtDaemon *)d;

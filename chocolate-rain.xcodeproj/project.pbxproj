@@ -18,6 +18,7 @@
 		DC5BFAFB1167F68E00F31545 /* XMLRPC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC5BFAFA1167F68E00F31545 /* XMLRPC.framework */; };
 		DC5BFB061167FA6600F31545 /* rtTorrent.m in Sources */ = {isa = PBXBuildFile; fileRef = DC5BFB051167FA6600F31545 /* rtTorrent.m */; };
 		DC86B9DD11681E76002C2B5B /* rtDaemon.m in Sources */ = {isa = PBXBuildFile; fileRef = DC86B9DC11681E76002C2B5B /* rtDaemon.m */; };
+		DCAAF35F116AE90D007EF787 /* DataModel.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = DCAAF35E116AE90D007EF787 /* DataModel.xcdatamodel */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +44,7 @@
 		DC5BFB051167FA6600F31545 /* rtTorrent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = rtTorrent.m; sourceTree = "<group>"; };
 		DC86B9DB11681E76002C2B5B /* rtDaemon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = rtDaemon.h; sourceTree = "<group>"; };
 		DC86B9DC11681E76002C2B5B /* rtDaemon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = rtDaemon.m; sourceTree = "<group>"; };
+		DCAAF35E116AE90D007EF787 /* DataModel.xcdatamodel */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +107,7 @@
 		29B97314FDCFA39411CA2CEA /* chocolate-rain */ = {
 			isa = PBXGroup;
 			children = (
+				DCAAF398116AEF5E007EF787 /* Models */,
 				080E96DDFE201D6D7F000001 /* Classes */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
@@ -141,6 +144,14 @@
 				1058C7A2FEA54F0111CA2CBB /* Other Frameworks */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		DCAAF398116AEF5E007EF787 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				DCAAF35E116AE90D007EF787 /* DataModel.xcdatamodel */,
+			);
+			name = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -205,6 +216,7 @@
 				DC86B9DD11681E76002C2B5B /* rtDaemon.m in Sources */,
 				DC2F4E0411695E9300F2BC5E /* ByteFormatter.m in Sources */,
 				DC2F4E3D11696C2B00F2BC5E /* SpeedFormatter.m in Sources */,
+				DCAAF35F116AE90D007EF787 /* DataModel.xcdatamodel in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
