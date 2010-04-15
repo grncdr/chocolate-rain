@@ -9,15 +9,34 @@
 #import "rtTorrent.h"
 
 
+
 @implementation rtTorrent
+
++ (void) initialize
+{
+	NSMutableDictionary *stringProperty = [[NSMutableDictionary alloc] init];
+	[stringProperty setObject:@"" forKey:@"value"];
+	[stringProperty setObject:[NSDate date] forKey:@"updateNext"];
+	NSMutableDictionary *numericProperty = [[NSMutableDictionary alloc] init];
+	[numericProperty setObject:[NSNumber numberWithInt:0] forKey:@"value"];
+	[numericProperty setObject:[NSDate date] forKey:@"updateNext"];
+	defaultProperties = [[NSMutableDictionary alloc] init];
+	[defaultProperties setObject:[numericProperty copy] forKey:@"size_bytes"];
+	[defaultProperties setObject:[numericProperty copy] forKey:@"bytes_done"];
+	[defaultProperties setObject:[numericProperty copy] forKey:@"down_rate"];
+	[defaultProperties setObject:[numericProperty copy] forKey:@"up_rate"];
+	[defaultProperties setObject:[numericProperty copy] forKey:@"ratio"];
+	[defaultProperties setObject:[numericProperty copy] forKey:@"peers_complete"];
+	[defaultProperties setObject:[numericProperty copy] forKey:@"peers_connected"];
+	[defaultProperties setObject:[numericProperty copy] forKey:@"state"];
+	[defaultProperties setObject:[stringProperty copy] forKey:@"name"];
+	[defaultProperties setObject:[stringProperty copy] forKey:@"directory"];
+	[numericProperty release];
+	[stringProperty release];
+}
+
 @synthesize sum;
-@synthesize name;
-@synthesize down_rate;
-@synthesize up_rate;
-@synthesize size_bytes;
-@synthesize bytes_done;
-@synthesize ratio;
-@synthesize started;
+@synthesize state_known;
 
 - (id) init
 {
@@ -35,25 +54,13 @@
 	NSAssert( sha1sum != nil, @"sha1sum must be non-nil" );
 	sum = sha1sum;
 	daemon = d;
-	name = @"";
-	size_bytes = 0;
-	bytes_done = 0;
-	ratio = 0;
-	up_rate = 0;
-	down_rate = 0;
-	started = 1;
-	[self refreshAll];
+	state_known = 0;
+	properties = [[NSMutableDictionary alloc] init];
+	for(NSString *name in [defaultProperties keyEnumerator]){
+		[properties setObject:[[NSMutableDictionary alloc] initWithDictionary:[defaultProperties objectForKey:name] copyItems:YES] 
+					   forKey: name];
+	}
 	return self;
-}
-
-- (void) refreshAll
-{
-	[daemon getProperty:@"name" forTorrent:self];
-	[daemon getProperty:@"size_bytes" forTorrent:self];
-	[daemon getProperty:@"bytes_done" forTorrent:self];
-	[daemon getProperty:@"ratio" forTorrent:self];
-	[daemon getProperty:@"up_rate" forTorrent:self];
-	[daemon getProperty:@"down_rate" forTorrent:self];
 }
 
 - (void) refreshProperty:(NSString *) prop_name
@@ -63,12 +70,33 @@
 
 - (double) percentDone
 {
-	return ((double) bytes_done / (double) size_bytes);
+	double bytes_done = [[self valueForKey:@"bytes_done"] doubleValue];
+	double size_bytes = [[self valueForKey:@"size_bytes"] doubleValue];
+	return bytes_done / size_bytes;
+}
+
+-(id) valueForUndefinedKey:(NSString *)key
+{
+	// Check if key exists in properties dictionary
+	NSMutableDictionary *property = [properties objectForKey:key];
+	//Check if value is stale, there should be a lot more heuristics involved in the below block
+	if([[NSDate date] compare:[property objectForKey:@"updateNext"]] == NSOrderedDescending) {
+		if ([key compare:@"name"] == NSOrderedSame || [key compare:@"size_bytes"] == NSOrderedSame) {
+			[property setObject:[NSDate distantFuture] forKey:@"updateNext"];	
+		} else {
+			[property setObject:[NSDate dateWithTimeIntervalSinceNow:10] forKey:@"updateNext"];
+		}
+		[self refreshProperty:key];
+	}
+	//Return value
+	return [property objectForKey:@"value"];
 }
 
 - (NSString *)description
 {
-	return [NSString stringWithFormat:@"%@ %@",[NSString stringWithFormat:@"%@...",[sum substringToIndex:6]],name];
+	NSString *sumString = [NSString stringWithFormat:@"%@...",[sum substringToIndex:6]];
+	NSString *name = [self valueForKey:@"name"];
+	return [NSString stringWithFormat:@"%@ %@",sumString,name];
 }
 
 // Called on ANY response from XMLRPC server
@@ -78,14 +106,15 @@
 	if ([[[request method] substringToIndex:5] compare: @"d.get_"]) {
 		NSString *prop_name = [[request method] substringFromIndex:6];
 		NSObject *value;
-		if (![prop_name compare:@"name"]){
-			value = [response object];
-		} else {
-			value = [NSNumber numberWithInt:[[response object] intValue]];
+		if ([prop_name compare:@"state"]){
+			state_known = 1;
 		}
-
-		DLog(@"Setting %@ to %@ for %@",prop_name,value,self);
-		[self setValue:value forKey:prop_name];
+		value = [response object];
+		NSLog(@"Setting %@ to %@ for %@",prop_name,value,self);
+		NSMutableDictionary *property = [properties objectForKey:prop_name];
+		[self willChangeValueForKey:prop_name];
+		[property setObject:value forKey:@"value"];
+		[self didChangeValueForKey:prop_name];
 	}
 	/*
 	 else if ([request method] == @"d.start") {

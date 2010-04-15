@@ -9,7 +9,6 @@
 #import <Foundation/Foundation.h>
 #import <XMLRPC/XMLRPCConnectionDelegate.h>
 
-
 @interface rtDaemon : NSObject {
 	XMLRPCConnectionManager *manager;
 	NSURL *url;

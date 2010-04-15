@@ -39,10 +39,10 @@
 	[request release];
 }
 
--(void) getProperty:(NSString *)prop_name
+-(void) getProperty:(NSString *)property
 		 forTorrent:(rtTorrent *)torrent
 {
-	[self requestMethod:[NSString stringWithFormat:@"d.get_%@", prop_name]
+	[self requestMethod:[NSString stringWithFormat:@"d.get_%@", property]
 		  withParameter:torrent.sum
 			andDelegate:torrent];
 }

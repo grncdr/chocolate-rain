@@ -1,4 +1,4 @@
-#ifdef DEBUG
+#ifdef DEBUGLEVEL
 #    define DLog(...) NSLog(__VA_ARGS__)
 #else
 #    define DLog(...) /* */
